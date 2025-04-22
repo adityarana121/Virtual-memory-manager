@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model MemoryBlock {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  size        Int
+  frameNumber Int
+  processName String
+  processId   Int
+  isAllocated Boolean
+}
